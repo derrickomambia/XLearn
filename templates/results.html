@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+{% block content %}
+<h2>Test Results</h2>
+<p>Total Questions: {{ summary.total }}</p>
+<p>Correct Answers: {{ summary.correct }}</p>
+<p>Score: {{ (summary.correct / summary.total * 100) | round(2) }}%</p>
+
+{% if study_notes %}
+<h3>Study Notes for Incorrect Answers</h3>
+{% for note in study_notes %}
+<div class="study-note">
+  <p><strong>Question:</strong> {{ note[0] }}</p>
+  <p><strong>Your Answer:</strong> {{ note[2] }}</p>
+  <p><strong>Correct Answer:</strong> {{ note[1] }}</p>
+  <p><strong>Explanation:</strong> {{ note[3] }}</p>
+</div>
+{% endfor %}
+{% else %}
+<p>Great job! No mistakes to review.</p>
+{% endif %}
+<a href="{{ url_for('index') }}">Back to Home</a>
+{% endblock %}

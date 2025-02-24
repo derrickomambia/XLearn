@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+{% block content %}
+<h2>Lecture Notes for {{ unit_id }} - {{ 'Electromagnetism' }}</h2>
+{% if lecture_notes %}
+{% for note in lecture_notes %}
+<div class="lecture-note">
+  <h3>Based on: {{ note.question_text }}</h3>
+  <p>{{ note.lecture_note | safe }}</p>
+  <hr>
+</div>
+{% endfor %}
+{% else %}
+<p>No lecture notes available. Please add questions to this unit.</p>
+{% endif %}
+<a href="{{ url_for('index') }}">Back to Home</a>
+{% endblock %}

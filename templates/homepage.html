@@ -1,0 +1,9 @@
+{% extends "base.html" %}
+{% block content %}
+<h2>Select a Unit</h2>
+<ul>
+  {% for unit in units %}
+  <li><a href="{{ url_for('lecture_notes', unit_id=unit[0]) }}">{{ unit[1] }}</a></li>
+  {% endfor %}
+</ul>
+{% endblock %}
